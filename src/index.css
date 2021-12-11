@@ -1,0 +1,213 @@
+@import url("https://fonts.googleapis.com/css2?family=Commissioner:wght@500&family=Kumbh+Sans:wght@400;800&family=Nunito+Sans:wght@300;700&family=Poppins:wght@500&family=Roboto+Condensed&display=swap");
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  /* colors */
+  --clr-dark-blue: hsl(209, 23%, 22%);
+  --clr-very-dark-blue: hsl(207, 26%, 17%);
+  --clr-very-dark-blue2: hsl(200, 15%, 8%);
+  --clr-dark-gray: hsl(0, 0%, 52%);
+  --clr-very-light-gray: hsl(0, 0%, 98%);
+  --clr-white: hsl(0, 0%, 100%);
+}
+body {
+  font-family: "Nunito Sans", sans-serif;
+}
+header {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4rem;
+  height: 10vh;
+  width: 100vw;
+  font-size: 0.8rem;
+  z-index: 10;
+  box-shadow: 0px -5px 10px var(--clr-very-dark-blue2);
+}
+header div:hover {
+  cursor: pointer;
+}
+main {
+  padding: 7rem 5rem;
+  min-height: 100vh;
+}
+.flex-container {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+.search {
+  position: relative;
+}
+.search > input {
+  width: 30vw;
+  line-height: 40px;
+  padding-left: 60px;
+  border-style: none;
+  border-radius: 0.5rem;
+}
+.search i {
+  position: absolute;
+  top: 13px;
+  padding-left: 25px;
+}
+
+.grid-container {
+  margin-top: 2rem;
+  clear: both;
+  display: grid;
+  padding: calc(10rem - 15vw);
+  justify-content: center;
+  grid-gap: 5rem 5vw;
+  grid-template-columns: repeat(auto-fit, 14rem);
+  grid-auto-rows: 20rem;
+}
+.country {
+  border-radius: 0.25rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+.country p,
+.country h4 {
+  padding-left: 0.6rem;
+}
+.country:hover {
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  transform: scale(1.1);
+}
+.filter {
+  position: relative;
+}
+.filter:hover {
+  cursor: pointer;
+}
+.filter i {
+  vertical-align: center;
+  float: right;
+}
+.region {
+  border-radius: 0.3rem;
+  min-width: 230px;
+  padding: 0.6rem 2rem;
+  margin-bottom: 0.25rem;
+}
+.regions {
+  position: absolute;
+  min-width: 230px;
+  border-radius: 0.3rem;
+}
+.regions > div {
+  padding: 0.4rem 2rem;
+}
+.regions > div:hover {
+  background-color: rgb(33, 33, 46);
+  color: white;
+  transition: 0.3s;
+}
+/* light mode */
+.header-light,
+.region-light,
+.regions-light,
+.back-button-light,
+.countries-light div {
+  text-transform: capitalize;
+  color: var(--clr-very-dark-blue2);
+  background: var(--clr-white);
+  transition: 0.3s;
+}
+.main-light {
+  color: var(--clr-very-dark-blue2);
+  background: var(--clr-very-light-gray);
+  transition: 0.3s;
+}
+.search-light > input {
+  color: var(--clr-very-dark-blue2);
+  background: var(--clr-white);
+  transition: 0.3s;
+}
+/* dark mode */
+.header-dark,
+.region-dark,
+.regions-dark,
+.back-button-dark,
+.countries-dark div {
+  text-transform: capitalize;
+  color: var(--clr-white);
+  background: var(--clr-dark-blue);
+  transition: 0.3s;
+}
+.main-dark {
+  color: var(--clr-white);
+  background: var(--clr-very-dark-blue);
+  transition: 0.3s;
+}
+.search-dark > input {
+  color: var(--clr-white);
+  background: var(--clr-dark-blue);
+  transition: 0.3s;
+}
+
+@media screen and (max-width: 650px) {
+  .flex-container {
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-content: center;
+  }
+  .search > input {
+    margin: 0rem auto 0rem;
+    width: 80%;
+  }
+  .filter {
+    margin: 0rem auto 0rem;
+    width: 80%;
+  }
+}
+.shown {
+  max-height: 300px;
+  overflow: hidden;
+  transition: max-height 0.3s;
+}
+.hidden {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s;
+}
+
+.back-button-dark,
+.back-button-light {
+  padding: 0.5rem 30px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.425);
+  margin-bottom: 2rem;
+  border: none;
+}
+.back-button-dark:hover,
+.back-button-light:hover {
+  cursor: pointer;
+  transition: 0.3s;
+  opacity: 0.6;
+}
+.detail {
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.detail-left img {
+  padding: 20px;
+}
+.detail-right {
+  width: 40rem;
+  line-height: 30px;
+  padding: 20px;
+}
+.detail-right h1 {
+  padding-bottom: 30px;
+}
+.detail-right span {
+  opacity: 0.6;
+}
