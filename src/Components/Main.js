@@ -1,41 +1,35 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import Filter from './Filter'
 import Country from './Country'
 import Search from './Search'
 import Details from './Details'
 import axios from 'axios'
+import { useFetch } from './useFetch'
+import { Context } from '../App'
 
-const Main = (props) => {
- const {mode} = props;
+const Main = () => {
+ const {mode} = useContext(Context);
  const [countries, setCountries] = useState([]);
  const [regCountries, setCountriesByRegion] = useState([]);
  const [nmCountries, setCountriesByName] = useState([]);
  const [detail, setDetails] = useState({});
  const [detailsShown, showDetails] = useState(false)
 
- useEffect(()=>{
-  axios.get('https://restcountries.com/v3.1/all')
-  .then(resp =>{
-    setCountriesByName(resp.data)
-    setCountriesByRegion(resp.data)
-  })
- }, []);
 
+const {status, data} = useFetch('https://restcountries.com/v3.1/all');
 useEffect(()=>{
-  setCountries(getMatch(nmCountries, regCountries))
-}, [nmCountries, regCountries])
-
-const getMatch = (arr1, arr2) =>{
-  const matchArr = [];
-  for(let i in arr1){
-    for(let j in arr2){
-      if(JSON.stringify(arr1[i]) === JSON.stringify(arr2[j])){
-        matchArr.push(arr1[i]);
-      }
-    }
+  if(status === 'fetched'){
+    setCountries(data);
+    setCountriesByName(data);
+    setCountriesByRegion(data);
   }
-  return matchArr;
-}
+},[status]);
+
+// useEffect(()=>{
+//   setCountries(getMatch(nmCountries, regCountries))
+// }, [nmCountries, regCountries])
+
+
  const changeRegion = async (value) =>{
   if(value){
    const resp = await axios.get('https://restcountries.com/v3.1/region/' + value);

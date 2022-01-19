@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { Context } from '../App';
 
-const Header = (props) => {
- const moon = props.mode === 'light' ? 'far' : 'fas';
+const Header = () => {
+  const {mode, setMode} = useContext(Context); 
+ const moon = mode === 'light' ? 'far' : 'fas';
  return (
-  <header className={"header-" + props.mode}>
+  <header className={"header-" + mode}>
    <h1>Where in the world?</h1>
-   <div onClick={() => props.changeMode()}>
+   <div onClick={() => setMode(prev => prev === 'light'? 'dark' : 'light')}>
     <i className = { moon + ' fa-moon'} style={{paddingRight: '5px'}}></i>
     change mode</div>
   </header>

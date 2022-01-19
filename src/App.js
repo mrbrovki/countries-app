@@ -1,17 +1,17 @@
-import React, {useState} from 'react'
+import React, {useState, createContext} from 'react'
 import Header from './Components/Header'
 import Main from './Components/Main'
 
+export const Context = createContext();
 const App = () => {
   const [mode, setMode] = useState("light");
-  const changeMode = () =>{
-    setMode(mode === "light"? "dark" : "light")
-  }
+  const [searchName, setSearchName] = useState("");
+  const [filter, setFilter] = useState("all");
   return (
-    <div>
-      <Header mode={mode} changeMode={changeMode}/>
-      <Main mode={mode}/>
-    </div>
+    <Context.Provider value={{searchName, setSearchName, filter, setFilter, mode, setMode}} >
+      <Header/>
+      <Main/>
+    </Context.Provider>
   )
 }
 
