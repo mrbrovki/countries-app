@@ -5,10 +5,8 @@ import Main from './Components/Main'
 export const Context = createContext();
 const App = () => {
   const [mode, setMode] = useState("light");
-  const [searchName, setSearchName] = useState("");
-  const [filter, setFilter] = useState("all");
   return (
-    <Context.Provider value={{searchName, setSearchName, filter, setFilter, mode, setMode}} >
+    <Context.Provider value={{mode, setMode}} >
       <Header/>
       <Main/>
     </Context.Provider>
