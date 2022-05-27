@@ -13,15 +13,16 @@
 }
 body {
   font-family: "Nunito Sans", sans-serif;
+  overflow-x: hidden;
 }
 header {
-  position: fixed;
   display: flex;
+  position: fixed;
   justify-content: space-between;
   align-items: center;
   padding: 0 4rem;
   height: 10vh;
-  width: 100vw;
+  width: 100%;
   font-size: 0.8rem;
   z-index: 10;
   box-shadow: 0px -5px 10px var(--clr-very-dark-blue2);
@@ -29,8 +30,11 @@ header {
 header div:hover {
   cursor: pointer;
 }
+header img {
+  margin-right: 0.1rem;
+}
 main {
-  padding: 7rem 5rem;
+  padding: 15vh 5rem;
   min-height: 100vh;
 }
 .flex-container {
@@ -42,16 +46,17 @@ main {
   position: relative;
 }
 .search > input {
+  font-size: 1.2rem;
   width: 30vw;
   line-height: 40px;
   padding-left: 60px;
   border-style: none;
   border-radius: 0.5rem;
 }
-.search i {
+.search img {
   position: absolute;
-  top: 13px;
-  padding-left: 25px;
+  top: 0.5rem;
+  left: 0.5rem;
 }
 
 .grid-container {
@@ -138,32 +143,34 @@ main {
   text-transform: capitalize;
   color: var(--clr-white);
   background: var(--clr-dark-blue);
-  transition: 0.3s;
+  transition: background-color 0.3s;
 }
 .main-dark {
   color: var(--clr-white);
   background: var(--clr-very-dark-blue);
-  transition: 0.3s;
+  transition: background-color 0.3s;
 }
 .search-dark > input {
   color: var(--clr-white);
   background: var(--clr-dark-blue);
-  transition: 0.3s;
+  transition: background-color 0.3s;
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 860px) {
+  header h1 {
+    font-size: 1rem;
+  }
   .flex-container {
     flex-flow: column nowrap;
     justify-content: center;
     align-content: center;
   }
   .search > input {
-    margin: 0rem auto 0rem;
-    width: 80%;
+    width: 100%;
   }
   .filter {
-    margin: 0rem auto 0rem;
-    width: 80%;
+    margin: 1rem auto 0rem;
+    width: 100%;
   }
 }
 .shown {
@@ -210,4 +217,22 @@ main {
 }
 .detail-right span {
   opacity: 0.6;
+}
+@media screen and (max-width: 1300px) {
+  .detail {
+    width: 100%;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+  }
+  .detail-right {
+    font-size: calc(0.5rem + 1vw);
+  }
+  .back-button-dark,
+  .back-button-light {
+    margin-left: -3rem;
+    margin-bottom: 0rem;
+  }
 }

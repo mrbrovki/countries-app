@@ -12,7 +12,7 @@ const Search = (props) => {
  return (
   <form className={`search search-${props.mode}`} onSubmit={(e) => submitName(e)}>
     <label htmlFor='country-name'>
-      <i className="fas fa-search"></i>
+      <img src='./assets/search-icon.svg' width='24px' height="24px"/>
     </label>
    <input 
    id ='country-name'
